@@ -1,0 +1,88 @@
+Problem Statement
+1768. Merge Strings Alternately
+
+Given two strings word1 and word2, merge them alternately. If one string is longer than the other, append the additional characters to the end of the merged string.
+
+Solution Class
+python
+class Solution:
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        ans = ''
+        i = 0
+        while i < len(word1) or i < len(word2):
+            if i < len(word1):
+                ans += word1[i]
+            if i < len(word2):
+                ans += word2[i]
+            i += 1
+        return ans
+Approach
+Initialization: Start with an empty string ans to store the result and an index i set to 0.
+
+Loop through both strings:
+
+Continue looping as long as i is less than the length of either word1 or word2.
+
+Check if the current index i is within the bounds of word1:
+
+If true, append the character at word1[i] to ans.
+
+Check if the current index i is within the bounds of word2:
+
+If true, append the character at word2[i] to ans.
+
+Increment the index i.
+
+Return the result: After the loop ends, return the merged string ans.
+
+Detailed Explanation
+Initialization:
+
+python
+ans = ''
+i = 0
+Initialize an empty string ans to build the result and a counter i for iteration.
+
+Loop through both strings:
+
+python
+while i < len(word1) or i < len(word2):
+    if i < len(word1):
+        ans += word1[i]
+    if i < len(word2):
+        ans += word2[i]
+    i += 1
+
+The loop continues until the counter i reaches the length of the longer string. Inside the loop:
+
+If i is within the length of word1, append the character from word1 at index i to ans.
+
+If i is within the length of word2, append the character from word2 at index i to ans.
+
+Increment the index i.
+
+Return the merged string:
+
+python
+return ans
+After the loop, return the merged string ans.
+
+Example
+Let's consider an example where word1 = "abc" and word2 = "pqr":
+
+Initialize ans = '' and i = 0.
+
+Loop through:
+
+i = 0: ans += "a" and ans += "p" → ans = "ap"
+
+i = 1: ans += "b" and ans += "q" → ans = "apbq"
+
+i = 2: ans += "c" and ans += "r" → ans = "apbqcr"
+
+The loop ends as i reaches the length of the longer string.
+
+Return ans = "apbqcr".
+
+Conclusion
+This approach efficiently merges two strings alternately by iterating through both strings simultaneously and appending characters as needed. The time complexity is O(n), where n is the maximum length of the two strings, ensuring optimal performance.
