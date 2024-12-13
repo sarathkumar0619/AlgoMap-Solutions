@@ -1,0 +1,74 @@
+Problem Statement
+2239 - Find Closest Number to Zero
+
+Given an array of integers nums, find the number closest to zero. If there are multiple answers, return the positive number.
+
+Solution Class
+python
+class Solution:
+    def findClosestNumber(self, nums: List[int]) -> int:
+        closest = nums[0]
+        for x in nums:
+            if abs(x) < abs(closest):
+                closest = x
+        
+        if closest < 0 and abs(closest) in nums:
+            return abs(closest)
+        else:
+            return closest
+Approach
+Initialization: Start by assuming the first element in the list (nums[0]) is the closest to zero.
+
+Iteration: Loop through each number in the list and compare its absolute value to the current closest:
+
+If the absolute value of the current number (x) is less than that of the current closest, update closest to be the current number.
+
+Final Adjustment: After the loop, if the closest number is negative but its absolute value exists in the list, return the absolute value (i.e., the positive equivalent). Otherwise, return the closest number found.
+
+Detailed Explanation
+Initialization:
+
+python
+closest = nums[0]
+We assume the first element is the closest number initially.
+
+Loop through the list:
+
+python
+for x in nums:
+    if abs(x) < abs(closest):
+        closest = x
+This loop checks each number in the list. If the absolute value of the current number x is smaller than the absolute value of closest, update closest to x.
+
+Final Check for Positive Closest Value:
+
+python
+if closest < 0 and abs(closest) in nums:
+    return abs(closest)
+else:
+    return closest
+After the loop, if closest is negative and its absolute value is present in the list, return the positive equivalent. If not, return closest as is.
+
+Example
+Let's consider an example where nums = [-4, -2, 1, 4, 8]:
+
+Start with closest = -4.
+
+Loop through:
+
+-4 vs -4 → No change
+
+-2 vs -4 → Update closest to -2
+
+1 vs -2 → Update closest to 1
+
+4 vs 1 → No change
+
+8 vs 1 → No change
+
+Final step: closest = 1 (no need to adjust)
+
+Thus, the closest number to zero is 1.
+
+Conclusion
+This approach efficiently finds the number closest to zero in the given list by iterating through the list once (O(n) complexity), ensuring optimal performance.
